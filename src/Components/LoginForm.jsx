@@ -1,5 +1,7 @@
 import * as yup from 'yup';
 import { Formik } from 'formik';
+import { useAuthContext } from "../Context/AuthContext";
+
 
 export function LoginForm() {
 
@@ -17,12 +19,15 @@ export function LoginForm() {
             )
     })
 
+    const { loginService } = useAuthContext();
+
     return (
         <div className="w-full max-w-xs shadow-lg">
             <Formik
                 initialValues={{ email: '', password: '' }}
                 onSubmit={(values, actions) => {
-                    alert(`successfully loggedIn ${values.email}  ${values.password}`)
+                    // alert(`successfully loggedIn ${values.email}  ${values.password}`)
+                    loginService(values.email, values.password);
                 }}
                 validationSchema={reviewSchema}
             >
@@ -62,7 +67,7 @@ export function LoginForm() {
                                     Sign In
                                 </button>
                                 <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                                    href="##">
+                                    href="/login">
                                     Forgot Password?
                                 </a>
                             </div>
