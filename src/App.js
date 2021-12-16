@@ -4,8 +4,8 @@ import { Home, Login } from './Pages/index';
 
 function App() {
   return (
-    <div className="App h-screen">
-      <Login />
+    <div className="App h-screen bg-blue-400">
+      <Home />
     </div>
   );
 }
